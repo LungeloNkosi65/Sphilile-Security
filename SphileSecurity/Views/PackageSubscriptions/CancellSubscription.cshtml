@@ -1,0 +1,91 @@
+﻿@model SphileSecurity.Models.PackageSubscription
+
+@{
+    ViewBag.Title = "CancellSubscription";
+}
+
+<h2>Cancel Subscription</h2>
+
+<h3>Are you sure you want to cancell this subscription ?</h3>
+<div>
+    @*<h4>PackageSubscription</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityPackage.PackageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityPackage.PackageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubscriptionFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubscriptionFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSubscribed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSubscribed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubReference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubReference)
+        </dd>
+        <dt>
+
+        </dt>
+
+        <dd>
+        </dd>
+
+        <dt>
+            <p><a class="btn btn-danger" onclick="location.href='@Url.Action("ConfirmSubscriptionCancel","PackageSubscriptions", new { id=Model.PackageSubscriptionId})'">Yes Confirm </a></p>
+
+        </dt>
+
+        <dd>
+            <p><a class="btn btn-primary" onclick="location.href='@Url.Action("Index","PackageSubscriptions")'">No Cancel </a></p>
+        </dd>
+
+    </dl>
+    @*<div class="form-actions no-color">
+        <p><a class="btn btn-default" onclick="location.href='@Url.Action("Create","PackageSubscriptions", new { id=Model.PackageSubscriptionId})'">Yes Confirm </a></p>
+        <p><a class="btn btn-default" onclick="location.href='@Url.Action("Index","PackageSubscriptions")'">No Cancel </a></p>
+    </div>*@
+    @*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }*@
+</div>

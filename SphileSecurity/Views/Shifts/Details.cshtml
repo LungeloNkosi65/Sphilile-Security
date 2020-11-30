@@ -1,0 +1,65 @@
+﻿@model SphileSecurity.Models.Shift
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Shift Details</h2>
+
+<div>
+    @*<h4>Shift</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftType.ShiftTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftType.ShiftTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayRatePerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayRatePerHour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShiftId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

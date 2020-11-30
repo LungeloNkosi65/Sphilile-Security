@@ -1,0 +1,126 @@
+﻿@model IEnumerable<SphileSecurity.Models.PackageSubscription>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (!User.IsInRole("Admin"))
+{
+    <h2>My Subscriptions</h2>
+}
+else
+{
+    <h2>All Subscriptions</h2>
+}
+
+<p>
+    @Html.ActionLink("Add New SUbscription", "PackageTypesView", "PackageTypes")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityPackage.PackageName)
+        </th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+        }
+
+        <th>
+            @Html.DisplayNameFor(model => model.SubscriptionFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateSubscribed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubReference)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecurityPackage.PackageName)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerEmail)
+        </td>
+    }
+
+    <td>
+        @Html.DisplayFor(modelItem => item.SubscriptionFee)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubStatus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateSubscribed)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubReference)
+    </td>
+    <td>
+        @if (!User.IsInRole("Admin"))
+        {
+            if (item.SubStatus == "Subscription Canceled")
+            {
+                @Html.DisplayName("Subscription Cancelled")
+            }
+            else if (item.SubStatus == "Awaiting Approval")
+            {
+                @Html.ActionLink("Details | ", "Details", new { id = item.PackageSubscriptionId })
+                @Html.ActionLink("Cancel   ", "CancellSubscription", new { id = item.PackageSubscriptionId })
+
+            }
+            else if (item.SubStatus == "Approved")
+            {
+                @Html.ActionLink("Pay Fee |", "SubPayment", new { id = item.PackageSubscriptionId })
+                @Html.ActionLink("Cancel   ", "CancellSubscription", new { id = item.PackageSubscriptionId })
+            }
+            else
+            {
+                @Html.ActionLink("Details  ", "Details", new { id = item.PackageSubscriptionId })
+            }
+        }
+        else
+        {
+
+            if (item.SubStatus == "Paid And Active")
+            {
+                @Html.ActionLink("Details  ", "Details", new { id = item.PackageSubscriptionId })
+            }
+            if (item.SubStatus == "Awaiting Approval")
+            {
+                @Html.ActionLink("Approve  |", "ApproveSubscription", new { id = item.PackageSubscriptionId }) 
+                @Html.ActionLink("Decline  |", "Details", new { id = item.PackageSubscriptionId }) 
+                @Html.ActionLink("Details  ", "Details", new { id = item.PackageSubscriptionId })
+            }
+            else if (item.SubStatus == "Subscription Canceled")
+            {
+                @Html.DisplayName("Subscription Cancelled")
+            }
+            else if (item.SubStatus == "Approved")
+            {
+                @Html.ActionLink("Details  ", "Details", new { id = item.PackageSubscriptionId })
+            }
+            else
+            {
+                @Html.ActionLink("Details  ", "Details", new { id = item.PackageSubscriptionId })
+            }
+        }
+
+
+    </td>
+</tr>
+    }
+
+</table>

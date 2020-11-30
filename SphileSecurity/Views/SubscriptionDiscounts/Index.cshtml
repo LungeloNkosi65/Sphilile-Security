@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SphileSecurity.Models.SubscriptionDiscount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Subscription Discounts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageType.PackageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountPercent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfOrders)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountPercent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfOrders)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubscriptionDiscountId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubscriptionDiscountId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubscriptionDiscountId })
+        </td>
+    </tr>
+}
+
+</table>

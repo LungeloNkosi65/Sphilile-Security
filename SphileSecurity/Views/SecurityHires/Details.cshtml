@@ -1,0 +1,66 @@
+﻿@model SphileSecurity.Models.SecurityHire
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SecurityHire</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityHireTypePackages.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityHireTypePackages.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateHired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateHired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateFor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HirePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HirePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SecurityHireId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SphileSecurity.Models.shoppingModels.Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2 class="title text-center">@ViewBag.Title</h2>
+
+<a class="btn btn-default" href="@Url.Action("Create","Departments")">
+    <i class="fa fa-plus"></i>
+    Create New
+</a>
+<table class="table table-hover table-striped" id="my_list">
+    <thead>
+        <tr class="table-header-row">
+            <th>
+                @Html.DisplayNameFor(model => model.Department_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Department_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Department_ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Department_ID })
+            </td>
+
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<script type="text/javascript">
+    $('#my_list').ModelsTable(
+          {
+              dom: 'Bfrtip',
+              lengthMenu: [
+                  [ 10, 25, 50, -1 ],
+                  [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+              ],
+              buttons: [
+                  'pageLength', 'pdf', 'print'
+              ]
+          }
+        );
+    $('#my_list')
+       .removeClass('display')
+       .addClass('table table-striped table-hover');
+</script>

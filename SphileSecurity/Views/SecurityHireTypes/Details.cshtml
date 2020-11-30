@@ -1,0 +1,26 @@
+﻿@model SphileSecurity.Models.SecurityHireType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Security Hire Type Details</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityHireTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityHireTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SecurityHireTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

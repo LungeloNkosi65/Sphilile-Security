@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SphileSecurity.Models.SecurityHire>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (User.IsInRole("Admin"))
+{
+    <h2>Security Hirings</h2>
+}
+else
+{
+    <h2>My Hirings</h2>
+}
+
+<p>
+    @Html.ActionLink("Create New", "SecurityHireTypes", "Home")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityHireTypePackages.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateHired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HirePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityHireTypePackages.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateHired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HirePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if (User.IsInRole("Customer"))
+                {
+                    if (item.Status == "Approved")
+                    {
+                        @Html.ActionLink("Edit |", "Edit", new { id = item.SecurityHireId }) 
+
+                        @Html.ActionLink("Details |", "Details", new { id = item.SecurityHireId })
+
+                        @Html.ActionLink("Delete |", "Delete", new { id = item.SecurityHireId })
+                        <a href="@Url.Action(actionName: "OnceOff", controllerName: "SubPayment", routeValues: new {amount = item.HirePrice, id=item.SecurityHireId})" class="btn btn-success">Pay</a>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Details |", "Details", new { id = item.SecurityHireId })
+
+                    }
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    if (item.Status != "Approved")
+                    {
+                        <a href="@Url.Action(actionName: "Approve", controllerName: "SecurityHires", routeValues: new {id = item.SecurityHireId})" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></a>
+                        <a href="@Url.Action(actionName: "Decline", controllerName: "SecurityHires", routeValues: new {id = item.SecurityHireId})" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    }
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SphileSecurity.Models.LeaveApplication>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (!User.IsInRole("Admin"))
+{
+    <h2>Leave Applications</h2>
+}
+else
+{
+    <h2>My Leave Applications</h2>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateApplied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveApplicationStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateApplied)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveApplicationStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Edit |", "Edit", new { id = item.LeaveApplicationId }) 
+                @Html.ActionLink("Details |", "Details", new { id = item.LeaveApplicationId }) 
+                @Html.ActionLink("Cancel ", "Delete", new { id = item.LeaveApplicationId })
+
+                @if (User.IsInRole("Admin") && item.LeaveApplicationStatus != "Approved")
+                {
+                    <a href="@Url.Action(actionName: "Approve", controllerName: "LeaveApplications", routeValues: new {id = item.LeaveApplicationId})" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    <a href="@Url.Action(actionName: "Decline", controllerName: "LeaveApplications", routeValues: new {id = item.LeaveApplicationId})" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+                }
+                @if (User.IsInRole("Admin") && item.LeaveApplicationStatus == "Approved")
+                {
+                    <a href="@Url.Action(actionName: "Decline", controllerName: "LeaveApplicationsController", routeValues: new {id = item.LeaveApplicationId})" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

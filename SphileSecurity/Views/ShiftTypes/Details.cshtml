@@ -1,0 +1,26 @@
+﻿@model SphileSecurity.Models.ShiftType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ShiftType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShiftTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

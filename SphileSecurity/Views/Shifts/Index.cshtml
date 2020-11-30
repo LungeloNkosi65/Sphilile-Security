@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SphileSecurity.Models.Shift>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Shifts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftType.ShiftTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayRatePerHour)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShiftName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShiftType.ShiftTypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShiftHours)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TimeIn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TimeOut)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PayRatePerHour)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ShiftId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ShiftId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ShiftId })
+    </td>
+</tr>
+}
+
+</table>

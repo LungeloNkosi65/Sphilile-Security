@@ -1,0 +1,63 @@
+﻿@model SphileSecurity.Models.LeaveApplication
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Cancel Leave Application</h2>
+
+<h3>Are you sure you want to Cancel this Leave Application?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateApplied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateApplied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveApplicationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveApplicationStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

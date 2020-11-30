@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SphileSecurity.Models.SecurityHireType>
+
+@{
+    ViewBag.Title = "SecurityHireTypes";
+}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        height: 150px !important;
+        margin-bottom: 20px !important;
+        border: groove !important;
+    }
+
+        .card:hover {
+            border-radius: 10px;
+            border-color: aqua !important;
+        }
+        .h2-d{
+            text-align:center
+        }
+</style>
+<h2 cc>Security Hire Types</h2>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6">
+        <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <strong>@Html.DisplayFor(modelItem => item.SecurityHireTypeName)</strong>
+                </h4>
+                <p><a class="btn btn-default" onclick="location.href='@Url.Action("IndexView","SecurityHireTypePackages", new { id=item.SecurityHireTypeId})'">Go To Packages </a></p>
+            </div>
+        </div>
+    </div>
+}
+
+

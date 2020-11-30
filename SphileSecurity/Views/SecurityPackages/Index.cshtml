@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SphileSecurity.Models.SecurityPackage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Available Packages</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageType.PackageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackagePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxPercent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackagePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaxPercent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SecurityPackageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SecurityPackageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SecurityPackageId })
+        </td>
+    </tr>
+}
+
+</table>

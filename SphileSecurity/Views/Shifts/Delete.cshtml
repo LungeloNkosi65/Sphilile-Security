@@ -1,0 +1,73 @@
+﻿@model SphileSecurity.Models.Shift
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Shift</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftType.ShiftTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftType.ShiftTypeName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayRatePerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayRatePerHour)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

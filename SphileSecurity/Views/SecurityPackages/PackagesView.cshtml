@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SphileSecurity.Models.SecurityPackage>
+
+@{
+    ViewBag.Title = "PackagesView";
+}
+
+
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        height: 350px !important;
+        margin-bottom: 20px !important;
+        border: groove !important;
+        margin-top:20px!important;
+    }
+
+        .card:hover {
+            border-radius: 10px;
+            border-color: aqua !important;
+        }
+
+    .top-head {
+        align-content: center;
+        text-align:center !important;
+    }
+</style>
+<h2 class="top-head" style="align-content:center!important;">Available Packages</h2>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            @Html.DisplayFor(modelItem => item.PackageName)
+                        </h4>
+                        <p class="card-text">
+                            Package Type:  @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+                            <br />
+                            Price: @Html.DisplayFor(modelItem => item.PackagePrice)
+                        </p>
+                        <p><a class="btn btn-default" onclick="location.href='@Url.Action("Create","PackageSubscriptions", new { id=item.SecurityPackageId})'">Select Package </a></p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+@*<tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackagePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaxPercent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageDescription)
+        </td>
+        <td>
+        </td>
+    </tr>*@
+
+@*</table>*@

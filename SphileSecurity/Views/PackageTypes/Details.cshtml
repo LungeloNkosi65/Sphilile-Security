@@ -1,0 +1,34 @@
+﻿@model SphileSecurity.Models.PackageType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PackageType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PackageTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

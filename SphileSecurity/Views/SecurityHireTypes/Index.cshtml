@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SphileSecurity.Models.SecurityHireType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Security Hire Types</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityHireTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityHireTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SecurityHireTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SecurityHireTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SecurityHireTypeId })
+        </td>
+    </tr>
+}
+
+</table>
